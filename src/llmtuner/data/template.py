@@ -224,6 +224,31 @@ def get_template_and_fix_tokenizer(
     )
     return template
 
+register_template(
+    name="alaya",
+    prefix=[
+        {"token": "[gMASK]"},
+        {"token": "sop"},
+        {"token": "<|system|>"},
+        "\n",
+        "{{system}}"
+    ],
+    prompt=[
+        {"token": "<|user|>"},
+        "\n",
+        "{{query}}",
+        {"token": "<|assistant|>"}
+    ],
+    system=(
+        "Follow the user's instructions carefully. Respond using markdown."
+    ),
+    sep=[],
+    stop_words=[
+        "<|user|>",
+        "<|observation|>"
+    ],
+    efficient_eos=True
+)
 
 register_template(
     name="alpaca",

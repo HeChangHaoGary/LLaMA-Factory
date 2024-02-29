@@ -62,6 +62,14 @@ def register_model_group(
     if template is not None:
         DEFAULT_TEMPLATE[prefix] = template
 
+register_model_group(
+    models={
+        "Alaya-7B-Base": "Alaya/Alaya-base",
+        "Alaya-7B-Chat": "Alaya/Alaya-Chat",
+    },
+    module="query_key_value",
+    template="alaya"
+)
 
 register_model_group(
     models={

@@ -164,7 +164,7 @@ def patch_model(model: "PreTrainedModel"):
     if "GenerationMixin" not in str(model.generate.__func__):
         model.generate = MethodType(PreTrainedModel.generate, model)
 
-    if getattr(model.config, "model_type", None) == "chatglm":
+    if getattr(model.config, "model_type", None) == "chatglm"  or  getattr(model.config, "model_type", None) == "alaya":
         setattr(model, "lm_head", model.transformer.output_layer)
         setattr(model, "_keys_to_ignore_on_save", ["lm_head.weight"])
 

@@ -56,7 +56,7 @@ def find_all_linear_modules(model: "PreTrainedModel") -> List[str]:
         raise ValueError("Finding linear modules for {} models is not supported.".format(quantization_method))
 
     output_layer_names = ["lm_head"]
-    if model.config.model_type == "chatglm":
+    if model.config.model_type == "chatglm" or getattr(config, "model_type", None) == "alaya":
         output_layer_names.append("output_layer")
 
     module_names = set()
